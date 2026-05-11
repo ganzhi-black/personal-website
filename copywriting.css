@@ -1,0 +1,316 @@
+@font-face {
+  font-display: swap;
+  font-family: "Jinghua LaoSong";
+  src: url("./assets/fonts/jinghua-laosong.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #ffffff;
+  color: #111111;
+  font-family: "Jinghua LaoSong", "Songti SC", SimSun, serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.showcase-page {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: minmax(35rem, 1fr) minmax(15rem, 0.34fr);
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5.2rem) clamp(2rem, 8vw, 8rem);
+}
+
+.browser-mockup {
+  position: relative;
+  width: min(100%, 52rem);
+  justify-self: end;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.32rem 0.32rem 0.06rem 0.06rem;
+  background: #eef4f4;
+  box-shadow:
+    0 2.2rem 3.2rem rgba(0, 0, 0, 0.18),
+    0 0.2rem 0.55rem rgba(0, 0, 0, 0.08);
+}
+
+.category-badge {
+  position: absolute;
+  top: 3.15rem;
+  left: 0.95rem;
+  z-index: 8;
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  padding: 0.22rem 0.82rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 0.6rem 1.6rem rgba(0, 0, 0, 0.08),
+    inset 0 0.08rem 0.2rem rgba(255, 255, 255, 0.72);
+  color: rgba(0, 0, 0, 0.68);
+  font-family: "Jinghua LaoSong", "Songti SC", SimSun, serif;
+  font-size: 0.9rem;
+  line-height: 1;
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.browser-bar {
+  display: grid;
+  height: 2.35rem;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 0.78rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, #f7fbff, #e9eff7);
+}
+
+.window-dots {
+  display: flex;
+  gap: 0.42rem;
+}
+
+.window-dots span {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+}
+
+.window-dots span:nth-child(1) {
+  background: #ff6157;
+}
+
+.window-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.window-dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.address-pill {
+  width: min(18rem, 62%);
+  min-height: 1.22rem;
+  padding: 0.12rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.browser-screen {
+  height: min(36.5rem, calc(100svh - 10rem));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #ffffff;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.32) transparent;
+}
+
+.browser-screen,
+.phone-screen {
+  scroll-behavior: auto;
+}
+
+.browser-screen.is-dragging,
+.phone-screen.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.browser-screen::-webkit-scrollbar,
+.phone-screen::-webkit-scrollbar {
+  width: 0.34rem;
+}
+
+.browser-screen::-webkit-scrollbar-thumb,
+.phone-screen::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.browser-screen img {
+  display: block;
+  width: 108%;
+  height: auto;
+  margin-left: -4%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.browser-screen img + img {
+  margin-top: 0.9rem;
+}
+
+.phone-mockup {
+  justify-self: start;
+  perspective: 70rem;
+}
+
+.phone-shell {
+  position: relative;
+  width: min(18.3rem, 28vw);
+  min-width: 14.5rem;
+  aspect-ratio: 0.48;
+  padding: 0.68rem;
+  border: 0.28rem solid #080808;
+  border-radius: 2.32rem;
+  background:
+    linear-gradient(100deg, #050505 0%, #343434 10%, #090909 24%, #565656 50%, #111111 66%, #050505 100%),
+    #0b0b0b;
+  box-shadow:
+    0.9rem 1.35rem 2.4rem rgba(0, 0, 0, 0.28),
+    0 0 0 0.28rem rgba(252, 252, 250, 0.92),
+    0 0 0 0.36rem rgba(218, 220, 218, 0.58),
+    0 0 0 0.46rem #080808,
+    inset 0.14rem 0 0.22rem rgba(255, 255, 255, 0.38),
+    inset -0.2rem 0 0.28rem rgba(0, 0, 0, 0.95);
+  transform: rotate(1deg);
+}
+
+.phone-shell::before,
+.phone-shell::after {
+  position: absolute;
+  width: 0.22rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #111111, #777777 48%, #0a0a0a);
+  box-shadow:
+    inset 0.04rem 0 0.1rem rgba(255, 255, 255, 0.22),
+    0.04rem 0 0.08rem rgba(0, 0, 0, 0.38);
+  content: "";
+}
+
+.phone-shell::before {
+  top: 5.8rem;
+  left: -0.55rem;
+  height: 4.2rem;
+}
+
+.phone-shell::after {
+  top: 8.7rem;
+  right: -0.56rem;
+  height: 5.4rem;
+}
+
+.phone-island {
+  position: absolute;
+  top: 0.72rem;
+  left: 50%;
+  z-index: 5;
+  width: 5.15rem;
+  height: 1.28rem;
+  border-radius: 999px;
+  background: #000000;
+  box-shadow:
+    inset 0 0.08rem 0.14rem rgba(255, 255, 255, 0.12),
+    0 0.08rem 0.18rem rgba(255, 255, 255, 0.22);
+  transform: translateX(-50%);
+}
+
+.phone-category {
+  top: auto;
+  bottom: 2.24rem;
+  left: 2.26rem;
+  z-index: 7;
+  min-height: 1.72rem;
+  padding: 0.18rem 0.62rem;
+  background: rgba(255, 255, 255, 0.42);
+  font-size: 0.76rem;
+}
+
+.phone-screen {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 0.2rem solid #0c0c0c;
+  border-radius: 1.75rem;
+  background: #f7fbfb;
+  cursor: grab;
+  box-shadow:
+    inset 0 0 0 0.08rem rgba(255, 255, 255, 0.18),
+    inset 0.6rem 0 1.2rem rgba(255, 255, 255, 0.16),
+    inset -0.45rem 0 1rem rgba(0, 0, 0, 0.08);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.32) transparent;
+}
+
+.phone-screen::before {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: block;
+  height: 0;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0.26), transparent 42%);
+  pointer-events: none;
+  content: "";
+}
+
+.phone-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.phone-screen img + img {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 980px) {
+  body {
+    overflow: auto;
+  }
+
+  .showcase-page {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 2.6rem;
+    padding: 2rem 1rem;
+  }
+
+  .browser-mockup,
+  .phone-mockup {
+    justify-self: center;
+  }
+
+  .browser-screen {
+    height: 32rem;
+  }
+
+  .phone-shell {
+    width: min(18rem, 72vw);
+  }
+}
+
+@media (max-width: 560px) {
+  .browser-bar {
+    height: 2rem;
+  }
+
+  .address-pill {
+    width: 100%;
+    font-size: 0.64rem;
+  }
+
+  .browser-screen {
+    height: 24rem;
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人介绍 | Portfolio</title>
+    <meta
+      name="description"
+      content="个人作品集中的个人介绍页面，呈现教育经历、内容运营经历与产品经理求职方向。"
+    />
+    <link rel="stylesheet" href="./intro.css?v=19" />
+  </head>
+  <body>
+    <img
+      class="page-background"
+      src="./assets/intro-page/jellyfish-bg.png"
+      alt=""
+      aria-hidden="true"
+    />
+    <main class="intro-page" aria-label="个人介绍">
+      <section class="envelope-stage">
+        <article
+          class="interactive-envelope"
+          id="introEnvelope"
+          role="button"
+          tabindex="0"
+          aria-label="打开个人介绍信"
+        >
+          <span class="envelope-flap" aria-hidden="true"></span>
+
+          <div class="letter-sheet">
+            <figure class="portrait-panel" aria-label="个人照片">
+              <img src="./assets/intro-page/profile.png" alt="个人照片" />
+            </figure>
+
+            <div class="intro-copy">
+              <p class="intro-line intro-greeting">你好，我是____。</p>
+              <p class="intro-line">我来自北方</p>
+              <p class="intro-line">我对一切抱有好奇心和探索欲</p>
+              <p class="intro-line">我是一个高共情型人格</p>
+
+              <p class="intro-line intro-block">
+                我的教育足迹：河南大学中文系——华东师范大学比较文学
+              </p>
+              <p class="intro-line">我的工作经历：一段内容运营</p>
+              <p class="intro-line">
+                我的求职意向：我希望做产品，因为我喜欢表达和拆解，希望自己的 idea 落地创造价值。
+              </p>
+
+              <p class="intro-line intro-closing">
+                如果你喜欢我的审美和逻辑，请从这里继续探索_
+              </p>
+            </div>
+          </div>
+
+          <div class="envelope-pocket" aria-hidden="true">
+            <span class="pocket-fold pocket-fold-left"></span>
+            <span class="pocket-fold pocket-fold-right"></span>
+            <span class="pocket-fold pocket-fold-bottom"></span>
+            <span class="envelope-label">
+              <span>我的简介</span>
+              <span>轻触展开</span>
+            </span>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const introEnvelope = document.querySelector("#introEnvelope");
+
+      introEnvelope?.addEventListener("click", () => {
+        introEnvelope.classList.toggle("is-open");
+      });
+
+      introEnvelope?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          introEnvelope.classList.toggle("is-open");
+        }
+      });
+    </script>
+  </body>
+</html>
