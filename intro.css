@@ -378,8 +378,12 @@ body::after {
   }
 
   .interactive-envelope.is-open .letter-sheet {
+    top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 4.8rem);
     width: min(22rem, 90vw);
-    height: min(34rem, 78svh);
+    height: auto;
+    max-height: none;
+    transform: translateX(-50%);
   }
 
   .portrait-panel {

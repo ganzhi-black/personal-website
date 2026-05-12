@@ -109,7 +109,7 @@ async function initThreeBackground() {
   scene.add(pointLight);
 
   const root = new THREE.Group();
-  root.position.set(0.18, 0.32, 0);
+  root.position.set(0.18, 0.24, 0);
   root.rotation.set(
     THREE.MathUtils.degToRad(-4),
     THREE.MathUtils.degToRad(-16),
@@ -540,7 +540,7 @@ async function initThreeBackground() {
     cards.forEach((card) => {
       const turn = ((card.userData.index - progress) / cards.length) * Math.PI * 2;
       const x = Math.sin(turn) * 2.0;
-      const y = -Math.cos(turn) * 0.78 + 0.16;
+      const y = -Math.cos(turn) * 0.92 + 0.08;
       const z = Math.cos(turn) * 1.55;
       const frontness = (Math.cos(turn) + 1) / 2;
       const turnToCamera = normalizeDelta(-turn * 0.55);
@@ -582,6 +582,7 @@ async function initThreeBackground() {
   }
 
   function onPointerDown(event) {
+    event.preventDefault();
     dragging = true;
     dragStartX = event.clientX;
     dragStartY = event.clientY;
@@ -589,6 +590,10 @@ async function initThreeBackground() {
     lastMouseMove = performance.now();
     renderer.domElement.style.cursor = "grabbing";
     renderer.domElement.setPointerCapture(event.pointerId);
+  }
+
+  function onPointerMove(event) {
+    onMouseMove(event);
   }
 
   function onPointerUp(event) {
@@ -607,7 +612,9 @@ async function initThreeBackground() {
       progress = normalized;
     }
 
-    renderer.domElement.releasePointerCapture(event.pointerId);
+    if (renderer.domElement.hasPointerCapture(event.pointerId)) {
+      renderer.domElement.releasePointerCapture(event.pointerId);
+    }
 
     if (clickDistance < 8) {
       const clickedCard = getPointedCard(event.clientX, event.clientY);
@@ -718,6 +725,7 @@ async function initThreeBackground() {
     window.removeEventListener("mousemove", onMouseMove);
     window.removeEventListener("resize", onResize);
     renderer.domElement.removeEventListener("pointerdown", onPointerDown);
+    renderer.domElement.removeEventListener("pointermove", onPointerMove);
     renderer.domElement.removeEventListener("pointerup", onPointerUp);
     renderer.domElement.removeEventListener("pointercancel", onPointerUp);
     cardGeometry.dispose();
@@ -803,6 +811,7 @@ async function initThreeBackground() {
   window.addEventListener("mousemove", onMouseMove);
   window.addEventListener("resize", onResize);
   renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  renderer.domElement.addEventListener("pointermove", onPointerMove);
   renderer.domElement.addEventListener("pointerup", onPointerUp);
   renderer.domElement.addEventListener("pointercancel", onPointerUp);
   window.addEventListener("beforeunload", dispose, { once: true });
