@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -6,6 +6,7 @@
     <title>文案设计 | Portfolio</title>
     <meta name="description" content="文案设计作品展示。" />
     <link rel="stylesheet" href="./copywriting.css" />
+    <link rel="stylesheet" href="./global-nav.css" />
   </head>
   <body>
     <main class="showcase-page" aria-label="文案设计作品展示">
@@ -51,6 +52,20 @@
       </section>
     </main>
 
+    <nav class="global-bottom-switch" data-global-switch aria-label="Page navigation">
+      <button class="global-switch-button active" type="button" data-global-view="overview">Overview</button>
+      <button class="global-switch-button" type="button" data-global-view="index">Index</button>
+    </nav>
+
+    <section class="global-index-panel" data-global-index-panel aria-label="Index">
+      <a href="./intro.html"><span>01</span><strong>个人介绍</strong></a>
+      <a href="./writing.html"><span>02</span><strong>文字作品</strong></a>
+      <a href="./copywriting.html"><span>03</span><strong>文案设计</strong></a>
+      <a href="https://www.xiaohongshu.com/user/profile/5d0750b1000000001201c484" target="_blank" rel="noopener noreferrer"><span>04</span><strong>自媒体账号</strong></a>
+      <a href="https://qimoshua.top" target="_blank" rel="noopener noreferrer"><span>05</span><strong>vibe coding</strong></a>
+    </section>
+
+    <script src="./global-nav.js"></script>
     <script src="./copywriting.js"></script>
   </body>
 </html>

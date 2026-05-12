@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -16,9 +16,9 @@
         <a class="nav-button active" href="#intro">
           <span>PROJECTS</span>
         </a>
-        <a class="nav-button" href="mailto:hello@example.com">
+        <button class="nav-button" type="button" data-contact-open>
           <span>CONTACT</span>
-        </a>
+        </button>
       </nav>
     </header>
 
@@ -65,6 +65,15 @@
         <span>05</span>
         <strong>vibe coding</strong>
       </a>
+    </section>
+
+    <section class="contact-overlay" id="contact-overlay" aria-label="Contact" aria-hidden="true">
+      <button class="contact-backdrop" type="button" data-contact-close aria-label="Close contact"></button>
+      <div class="contact-actions">
+        <a href="tel:13562011509">13562011509</a>
+        <a href="https://www.instagram.com/wenxi">wenxi</a>
+        <a href="mailto:3214482199@qq.com">3214482199@qq.com</a>
+      </div>
     </section>
 
     <script src="./app.js"></script>

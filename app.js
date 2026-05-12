@@ -5,6 +5,14 @@ async function initThreeBackground() {
     const overlay = document.querySelector("#intro-overlay");
     const hey = document.querySelector(".intro-word-hey");
     const welcome = document.querySelector(".intro-word-welcome");
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("skipIntro") === "1") {
+      document.body.classList.remove("intro-active");
+      overlay?.classList.add("is-hidden");
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.hash}`);
+      return;
+    }
 
     if (!overlay || !hey || !welcome) {
       document.body.classList.remove("intro-active");
@@ -41,6 +49,9 @@ async function initThreeBackground() {
   const container = document.querySelector("#stage");
   const switchButtons = Array.from(document.querySelectorAll(".switch-button"));
   const indexPanel = document.querySelector("#index-panel");
+  const contactOverlay = document.querySelector("#contact-overlay");
+  const contactOpen = document.querySelector("[data-contact-open]");
+  const contactClose = document.querySelector("[data-contact-close]");
 
   const cardNames = [
     "\u4e2a\u4eba\u4ecb\u7ecd",
@@ -742,7 +753,51 @@ async function initThreeBackground() {
       });
 
       indexPanel.classList.toggle("open", isIndex);
+
+      if (!isIndex) {
+        document.body.classList.remove("contact-open");
+        contactOverlay?.classList.remove("open");
+        contactOverlay?.setAttribute("aria-hidden", "true");
+        window.location.hash = "";
+      }
     });
+  });
+
+  indexPanel?.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href^='http']");
+
+    if (!link) {
+      return;
+    }
+
+    event.preventDefault();
+    const openedWindow = window.open(link.href, "_blank");
+
+    if (openedWindow) {
+      openedWindow.opener = null;
+      return;
+    }
+
+    window.location.href = link.href;
+  });
+
+  function setContactOpen(isOpen) {
+    document.body.classList.toggle("contact-open", isOpen);
+    contactOverlay?.classList.toggle("open", isOpen);
+    contactOverlay?.setAttribute("aria-hidden", String(!isOpen));
+    indexPanel?.classList.remove("open");
+    switchButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.view === "overview");
+    });
+  }
+
+  contactOpen?.addEventListener("click", () => setContactOpen(true));
+  contactClose?.addEventListener("click", () => setContactOpen(false));
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setContactOpen(false);
+    }
   });
 
   window.addEventListener("mousemove", onMouseMove);

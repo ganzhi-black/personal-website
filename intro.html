@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,9 @@
       name="description"
       content="个人作品集中的个人介绍页面，呈现教育经历、内容运营经历与产品经理求职方向。"
     />
-    <link rel="stylesheet" href="./intro.css?v=19" />
+    <link rel="preload" as="image" href="./assets/intro-page/profile-optimized.jpg" />
+    <link rel="stylesheet" href="./intro.css?v=20" />
+    <link rel="stylesheet" href="./global-nav.css" />
   </head>
   <body>
     <img
@@ -30,7 +32,7 @@
 
           <div class="letter-sheet">
             <figure class="portrait-panel" aria-label="个人照片">
-              <img src="./assets/intro-page/profile.png" alt="个人照片" />
+              <img src="./assets/intro-page/profile-optimized.jpg" decoding="async" fetchpriority="high" alt="个人照片" />
             </figure>
 
             <div class="intro-copy">
@@ -66,6 +68,20 @@
       </section>
     </main>
 
+    <nav class="global-bottom-switch" data-global-switch aria-label="Page navigation">
+      <button class="global-switch-button active" type="button" data-global-view="overview">Overview</button>
+      <button class="global-switch-button" type="button" data-global-view="index">Index</button>
+    </nav>
+
+    <section class="global-index-panel" data-global-index-panel aria-label="Index">
+      <a href="./intro.html"><span>01</span><strong>个人介绍</strong></a>
+      <a href="./writing.html"><span>02</span><strong>文字作品</strong></a>
+      <a href="./copywriting.html"><span>03</span><strong>文案设计</strong></a>
+      <a href="https://www.xiaohongshu.com/user/profile/5d0750b1000000001201c484" target="_blank" rel="noopener noreferrer"><span>04</span><strong>自媒体账号</strong></a>
+      <a href="https://qimoshua.top" target="_blank" rel="noopener noreferrer"><span>05</span><strong>vibe coding</strong></a>
+    </section>
+
+    <script src="./global-nav.js"></script>
     <script>
       const introEnvelope = document.querySelector("#introEnvelope");
 
