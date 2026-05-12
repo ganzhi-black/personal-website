@@ -109,7 +109,7 @@ async function initThreeBackground() {
   scene.add(pointLight);
 
   const root = new THREE.Group();
-  root.position.set(0.18, -0.05, 0);
+  root.position.set(0.18, 0.32, 0);
   root.rotation.set(
     THREE.MathUtils.degToRad(-4),
     THREE.MathUtils.degToRad(-16),
@@ -540,7 +540,7 @@ async function initThreeBackground() {
     cards.forEach((card) => {
       const turn = ((card.userData.index - progress) / cards.length) * Math.PI * 2;
       const x = Math.sin(turn) * 2.0;
-      const y = -Math.cos(turn) * 1.25;
+      const y = -Math.cos(turn) * 0.78 + 0.16;
       const z = Math.cos(turn) * 1.55;
       const frontness = (Math.cos(turn) + 1) / 2;
       const turnToCamera = normalizeDelta(-turn * 0.55);
